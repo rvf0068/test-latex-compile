@@ -3,10 +3,10 @@ name: LaTeX Compilation
 on:
   push:
     branches:
-      - master # or your main branch name
+      - master  # or your main branch name
   pull_request:
     branches:
-      - master # or your main branch name
+      - master  # or your main branch name
 
 jobs:
   build_latex:
@@ -15,21 +15,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up LaTeX
-        uses: dante-ev/latex-action@latest
-        with:
-          packages: texlive-latex-recommended, texlive-fonts-recommended, amsmath
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra
 
-      - name: Print the content of the dodgy tex file
-        run: cat /usr/local/texlive/2024/texmf-dist/tex/latex/tools/.tex
+      - name: Initialize user texmf tree (if needed)
+        run: tlmgr init-usertree || echo "tlmgr already initialized"
+
+      - name: Print the content of mydoc.tex
+        run: cat mydoc.tex
 
       - name: Compile LaTeX document
         run: |
           pdflatex mydoc.tex
-          # If you have bibtex
-          # bibtex mydoc.aux
-          # pdflatex mydoc.tex
-          # pdflatex mydoc.tex
+          cat mydoc.log # Add this line to print the log file
 
       - name: Upload PDF to artifacts
         uses: actions/upload-artifact@v4
