@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: dante-ev/latex-action@latest
 
       - name: Set up LaTeX
         uses: latex3/setup-texlive@v2
