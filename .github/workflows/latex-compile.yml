@@ -38,7 +38,8 @@ jobs:
           path: mydoc.pdf
 
       - name: Debug - Print GITHUB_TOKEN
-        run: echo "GITHUB_TOKEN: ${{ secrets.LATEX_GITHUB_TOKEN }}"
+        run: |
+	  echo "GITHUB_TOKEN: ${{ secrets.LATEX_GITHUB_TOKEN }}"
 
       - name: Commit PDF
         run: |
