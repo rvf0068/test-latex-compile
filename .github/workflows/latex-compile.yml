@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: dante-ev/latex-action@latest
+        uses: actions/checkout@v3
 
       - name: Set up LaTeX
-        uses: latex3/setup-texlive@v2
+        uses: dante-ev/latex-action@latest
         with:
           packages: texlive-latex-recommended, texlive-fonts-recommended, amsmath
 
