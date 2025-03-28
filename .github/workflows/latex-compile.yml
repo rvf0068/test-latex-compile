@@ -43,4 +43,7 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add mydoc.pdf
           git commit -m "Compiled LaTeX document to PDF" -a || echo "No changes to commit"
-          git push origin HEAD:${GITHUB_REF}
+          git push origin HEAD:${GITHUB_REF} --force
+        env:
+          GITHUB_TOKEN: ${{ secrets.LATEX_GITHUB_TOKEN }}
+
