@@ -20,6 +20,9 @@ jobs:
         with:
           packages: texlive-latex-recommended, texlive-fonts-recommended, amsmath
 
+      - name: Print the content of the dodgy tex file
+        run: cat /usr/local/texlive/2024/texmf-dist/tex/latex/tools/.tex
+
       - name: Compile LaTeX document
         run: |
           pdflatex mydoc.tex
